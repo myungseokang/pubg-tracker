@@ -4,7 +4,10 @@
       <input type="text" v-model="nickname" placeholder="닉네임을 입력해주세요" />
       <input type="submit" value="Submit" v-on:click="get_ratings"/>
     </label>
-    <p>INPUT: {{ nickname }}</p>
+    <div v-if="ok" class="ratingBoard">
+      <h2>{{ nickname }}</h2>
+      <p>server: {{ server }}</p>
+    </div>
   </div>
 </template>
 
@@ -14,11 +17,14 @@ export default {
   data() {
     return {
       nickname: '',
+      ok: false,
+      server: '',
     }
   },
   methods: {
     get_ratings: function (e) {
-      alert(this.nickname)
+      this.ok = true
+      this.server = 'AS'
     }
   }
 }
